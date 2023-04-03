@@ -83,10 +83,8 @@ async def on_message(message):
 @client.command()
 async def explain(ctx):
     embed = discord.Embed(title="Explanation of This:tm:", description="", color=0xFF0000)
-    embed.add_field(name="What is this server?", value="This Discord Server is the community area for Surviv Reloaded, open-source server for the defunct online game surviv.io.")
-    embed.add_field(name="What is this bot?", value="This bot was made by Killaship to save the hassle of explaining what this is to everyone.")
-    embed.add_field(name="What is Surviv Reloaded?", value="It's an open-source server hosting the original client. In other words, it's the original surviv.io, just hosted by a different server. It's not a clone of Surviv.io.")
-    embed.add_field(name="Where can I get more info?", value="https://github.com/SurvivReloaded")
+    embed.add_field(name="README", value="This bot is for development! Don't use me!")
+
     await ctx.send(embed=embed)
 
 
@@ -113,13 +111,8 @@ async def awardxp(ctx, user: discord.User, amount = 0):
 @client.command()
 async def links(ctx):
     embed = discord.Embed(title="Links", description="", color=0xFF0000)
-    embed.add_field(name="Test Server", value="https://test.resurviv.io")
-    embed.add_field(name="Play Stable Version", value="https://resurviv.io")
-    embed.add_field(name="Discord Perma Invite", value="https://discord.resurviv.io")
-    embed.add_field(name="Subreddit", value="https://reddit.com/r/survivreloaded")
-    embed.add_field(name="Github (Organization)", value="https://github.com/SurvivReloaded")
-    embed.add_field(name="GitLab (deprecated)", value="https://gitlab.com/hasanger/survivreloaded")
-    embed.add_field(name="Bot GitHub", value="https://github.com/Killaship/survivbot")
+    embed.add_field(name="README", value="This bot is for development! Don't use me!")
+
     await ctx.send(embed=embed)
 
 
@@ -145,43 +138,6 @@ async def getleaderboard(ctx):
             break
     embed = discord.Embed(title=text, description="Top 6 XP counts!", color=0xFF0000)
     await ctx.send(embed=embed)
-
-
-@client.event
-async def on_message_delete(message):
-    deleted = discord.Embed(description="Message deleted in {msgchannel}".format(msgchannel=message.channel.mention), color=0xFF0000)
-    channel=client.get_channel(1092435780095451236)
-    if(message.author.id != 1079242361491693658):
-        
-        if message.attachments:
-            if(len(message.attachments) == 1):
-                if message.attachments[0].url.endswith(('.jpg', '.png', '.jpeg', '.gif')):
-                    deleted.set_image(url=message.attachments[0].url)
-                else:
-                    deleted.add_field(name="Attachment", value=message.attachments[0].url) # No attachment or unsupported file     
-        deleted.add_field(name="Author", value=message.author)
-        deleted.add_field(name="Message", value=message.content)
-        deleted.timestamp = message.created_at
-        await channel.send(embed=deleted)
-    
-    
-@client.event
-async def on_message_edit(message_before, message_after):
-    edited = discord.Embed(description="Message edited in {msgchannel}".format(msgchannel=message_before.channel.mention), color=0xFFFF00)
-    channel=client.get_channel(1092435780095451236)
-    if(message_before.author.id != 1079242361491693658):
-        
-        if message_before.attachments:
-            if(len(message_before.attachments) == 1):
-                if message_before.attachments[0].url.endswith(('.jpg', '.png', '.jpeg', '.gif')):
-                    edited.set_image(url=message_before.attachments[0].url)
-                else:
-                    edited.add_field(name="Attachment", value=message_before.attachments[0].url) # No attachment or unsupported file     
-        edited.add_field(name="Author", value=message_before.author)
-        edited.add_field(name="Message Before", value=message_before.content)
-        edited.add_field(name="Message After", value=message_after.content)
-        edited.timestamp = message_before.created_at
-        await channel.send(embed=edited)
     
     
 
@@ -194,21 +150,9 @@ async def help(ctx):
 
     
 
-    embed.add_field(name="$explain", value="Explains this server and lists FAQ.")
+    embed.add_field(name="README", value="This bot is for development! Don't use me!")
 
-    embed.add_field(name="$links", value="Lists various links related to the project.")
 
-    embed.add_field(name="$serverstatus", value="Checks whether the game server (or at least website) is up. It checks all websites on which the game is hosted. Not too reliable, might return 502 errors.")
-
-    embed.add_field(name="$getxp", value="This command shows the amount of XP the sender has.")
-    
-    embed.add_field(name="$getleaderboard", value="This command lists the 5 members of the server with the most XP!. (6 including bot)")
-
-    embed.add_field(name="$checkurl", value="Checks the connectivity of any URL.")
-
-    embed.add_field(name="$help", value="This command.")
-
-    embed.add_field(name="Bot GitHub", value="https://github.com/Killaship/survivbot")
 
     await ctx.send(embed=embed)#sends the embed.
 

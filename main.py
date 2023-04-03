@@ -45,7 +45,7 @@ signal.signal(signal.SIGALRM, timeout_handler)
 intents = discord.Intents.default()
 intents.members = True
 
-client = commands.Bot(command_prefix = '$', help_command=None, intents=intents) #Makes the bot prefix.
+client = commands.Bot(command_prefix = '%', help_command=None, intents=intents) #Makes the bot prefix.
 
     # https://discord.com/api/oauth2/authorize?client_id=1079242361491693658&permissions=8&scope=applications.commands%20bot
 

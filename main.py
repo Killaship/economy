@@ -69,7 +69,7 @@ async def on_ready():
 async def on_message(message):
     global totalmessages
     if message.author.id not in userdata.keys():
-        userdata[message.author.id] = {'xp': 0, 'time': -1}
+        userdata[message.author.id] = {'xp': 0, 'time': -1, 'money': 0, 'inventory': []}
     if userdata[message.author.id]['time'] + 30 < time.time():
         userdata[message.author.id]['time'] = time.time()
         userdata[message.author.id]['xp'] += random.randint(5, 10)
@@ -79,13 +79,16 @@ async def on_message(message):
 
     await client.process_commands(message)
 
+#@client.command()
+#async def getmoney(ctx): # TODO: Show current amount of money the user has
 
-@client.command()
-async def explain(ctx):
-    embed = discord.Embed(title="Explanation of This:tm:", description="", color=0xFF0000)
-    embed.add_field(name="README", value="This bot is for development! Don't use me!")
+#@client.command()
+#async def convert(ctx, xp): # TODO: Convert XP to money at a rate of $1 for every 100 XP
 
-    await ctx.send(embed=embed)
+#@client.command()
+#async def give(ctx, money, item = 0, amount = 0): # TODO: Give some amount of money, between players, as well as items
+
+    
 
 
 @client.command()
